@@ -4,10 +4,37 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
-  
-};
+    id:{
+      type:DataTypes.INTEGER,
+      autoIncrement:true,
+      allowNull:true,
+      primaryKey:true
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+    
+  },
+  dificultad:{
+      type: DataTypes.INTEGER,
+      validate:{
+        min:1,
+        max:5
+      },
+      allowNull: false
+  },
+  duracion:{
+      type: DataTypes.INTEGER,
+      allowNull: false 
+  },
+  temporada:{
+      type:DataTypes.ENUM("Summer", "Autumn","Winter","Spring"),
+      allowNull: false
+  }
+},
+{
+  timestamps:false 
+}
+  );
+}; 
+

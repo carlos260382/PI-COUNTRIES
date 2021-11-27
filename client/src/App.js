@@ -1,9 +1,16 @@
 import './App.css';
+import { landing, home } from './components'  
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+    <BrowserRouter> 
+    <Switch>
+    <Route exact path="/Home" component={home} />
+    <Route exact path="/" component={landing} />
+    </Switch>
+    </BrowserRouter>
     </div>
   );
 }

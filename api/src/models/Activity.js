@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
-    id:{
+    idActivity:{
       type:DataTypes.INTEGER,
       autoIncrement:true,
       allowNull:true,
@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     allowNull: false
     
   },
-  dificultad:{
+  difficulty:{
       type: DataTypes.INTEGER,
       validate:{
         min:1,
@@ -23,11 +23,11 @@ module.exports = (sequelize) => {
       },
       allowNull: false
   },
-  duracion:{
+  duration:{
       type: DataTypes.INTEGER,
       allowNull: false 
   },
-  temporada:{
+  season:{
       type:DataTypes.ENUM("Summer", "Autumn","Winter","Spring"),
       allowNull: false
   }
@@ -38,3 +38,7 @@ module.exports = (sequelize) => {
   );
 }; 
 
+// "name" : "Benin"
+// "dificultad" : "5" 
+// "duracion" : "alta"
+// "temporada" : "Summer"

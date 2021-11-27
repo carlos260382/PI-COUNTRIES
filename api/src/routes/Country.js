@@ -68,11 +68,11 @@ async function getIdPais(req, res, next) {
 router.get ('/', getApiInfo) 
 
 router.get("/", async (req, res) => {
-    const { name } = req.query;
-  
+  const { name } = req.query;
+  const paisesAll = await getApiInfo();
     try {
       if (name) {
-        //pregunto si el usuario esta intentando buscar un pais por su nombre pasado como query parameter 
+         
         let country = await Country.findAll({
           include: Activity, 
           where: {
@@ -98,6 +98,59 @@ router.get("/", async (req, res) => {
       res.status(404).send("Country not found");
     }
   });
+
+
+
+
+
+  // const { name } = req.query;
+  // const paisesAll = await getApiInfo();
+  // try {
+  // if (name){
+  //   paisesName = await paisesAll.filter(eleme => eleme.name.toLowerCase().include(name.toLowerCase()))
+  // paisesName.length ?
+  // res.status(200).send(paisesName) :
+  // res.status(400).send('pais no encontrado')
+  // }else{
+  //   res.status(200).send(paisesAll)
+  // }
+    
+  // } catch (error) {
+  //   res.status(404).send("pais no encontrado");
+  // } 
+
+  // })
+
+
+
+  //   try {
+  //     if (name) {
+         
+  //       let country = await Country.findAll({
+  //         include: Activity, 
+  //         where: {
+           
+  //           name: {
+  //             [Op.iLike]:name + "%",
+  //           },
+            
+  //         },
+  //         order: [["name", "ASC"]],
+  //       });
+  //       return res.send(country);
+       
+        
+  //     } else if (!name) {
+  //       let country = await Country.findAll({
+  //         include: Activity,
+  //         order: [["name", "ASC"]],
+  //       });
+  //       return res.send(country);
+  //     }
+  //   } catch (error) {
+  //     res.status(404).send("Country not found");
+  //   }
+  // });
 
 router.get("/:idPais", getIdPais)  
 

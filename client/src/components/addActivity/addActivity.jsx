@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postActivity } from "../../actions";
-import { ButtonHome, ValidationInput } from "../index";
+import { Button, ValidationInput } from "../index";
 //import styles from "./AddActivity.module.css";
 //import s from "../Button/ButtonHome.module.css";
 
@@ -44,7 +44,6 @@ export default function AddActivity() {
 
   const handleclick = (e) => {
     e.preventDefault();
-    // console.log("input en handleclick", input);
     dispatch(postActivity(input));
     setInput({
       name: "",
@@ -60,7 +59,7 @@ export default function AddActivity() {
     <div className={styles.container}>
       <form className={styles.form}>
         <fieldset>
-          <legend>ADD ACTIVITY</legend>
+          <legend>Register Tourist Activity</legend>
           <div className={styles.formGroup}>
             <label>Name </label>
             <input
@@ -68,14 +67,14 @@ export default function AddActivity() {
               type="text"
               value={input.name}
               autoComplete="off"
-              placeholder="Name of the activity "
+              placeholder="Enter Activity"
               onChange={handleChange}
               className={error.name && styles.danger}
             />
             {error.name ? <p className={styles.danger}>{error.name}</p> : ""}
           </div>
           <div className={styles.formGroup}>
-            <label>Difficulty (1 - 5) </label>
+            <label>Difficulty (escriba de 1 a 5) </label>
             <select
               className={error.difficulty && styles.danger}
               onChange={handleChange}
@@ -122,7 +121,7 @@ export default function AddActivity() {
           </div>
 
           <div className={styles.formGroup}>
-            <label>Seleccionar Countries: </label>
+            <label>select countries: </label>
             <div>
               <select
                 className={error.countries && styles.danger}
@@ -149,7 +148,7 @@ export default function AddActivity() {
           </div>
           
           <div className={styles.btns}>
-            <ButtonHome />
+            <Button/>
             <button
               className={s.btn}
               onClick={handleclick}
@@ -160,7 +159,7 @@ export default function AddActivity() {
                 error.countries
               }
             >
-              Add Activity
+              Insert Activity
             </button>
           </div>
         </fieldset>

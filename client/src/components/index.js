@@ -10,7 +10,7 @@ import AlphaSort from './filter/AlphaSort';
 import PopulationSort from './filter/PopulationSort';
 import FilterByContinent from './filter/FilterByContinent';
 import FilterByActivity from './filter/FilterByActivity';
-import ButtonHome from './button/ButtonHome';
+import Button from './button/ButtonHome';
 
 import { ValidationInput } from './ValidationInput'
 
@@ -28,7 +28,7 @@ export{
     AlphaSort,
     PopulationSort,
     FilterByActivity,
-    ButtonHome, 
+    Button, 
     ValidationInput,
     
 }

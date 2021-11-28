@@ -1,39 +1,33 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../../actions";
+import {
+  Continent,
+  Reset,
+  Countries,
+  NavBar,
+  AlphaSort,
+  Population,
+  Activity,
 
-export function Home (){
-const dispatch = useDispatch();
-const allcountries = useSelector((state) => state.countries);
+} from "../../components/index.js";
+import styles from "../Home/Home.module.css";
 
-useEffect(()=>{
-dispatch(getCountries())
-
-}, [])
-
-function handleClick(e){
-e.preventDefault();
-dispatch(getCountries());
-
+export default function Home() {
+  return (
+    <div className={styles.container}>
+      <nav className={styles.navbar} >
+        <NavBar />
+      </nav>
+      <section className={styles.filters}>
+        <AlphaSort/>
+        <Population/>
+        <Continent />
+        <Activity />
+        <Reset />
+      </section>
+      <section className={styles.countries}>
+        <Countries />
+        
+      </section>
+    </div>
+  );
 }
-
-return (
-<div>
-<link to = '/activity'> Crear Actividad</link>
-<h1>Busca Tu Pais de Preferencia</h1> 
-<button onClick= {e=>{handleClick(e)}}>
-    Volver a Cargar Todos los Paises</button>
-<div>
-    <section>
-        <option value="asc">Ascendente</option>
-        <option value="des">Descendente</option>
-    </section>
-    <section>
-        <option value="continente">Filtrar Por Continente</option>
-        <option value="actividad">Filtrar Por Actividad</option>
-    </section>
-</div>
-</div>
-
-)}

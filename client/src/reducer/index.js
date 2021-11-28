@@ -13,7 +13,7 @@ PAGED,
 const initialState = {
 countries: [],
 filterCountries: [],
-countryDetail: [],
+countryDetal: [],
 activities:[],
 currentPage:Number("1"),
 }
@@ -34,7 +34,7 @@ switch (action.payload) {
           case GET_COUNTRY_DETAL:
             return {
               ...state,
-              countryDetail: action.payload,
+              countryDetal: action.payload,
             };
           case FILTER_BY_CONTINENT:
             if (action.payload === "All") { //si son todos se guarda en el estado
@@ -60,7 +60,7 @@ switch (action.payload) {
                 activities:action.payload
               };
               case FILTER_BY_ACTIVITY:
-                //console.log("REDUCER FILTER_BY_ACTIVITY",action.payload)
+                
                 return{ // en el stado de todos los paises  
                   ...state, //y se mapea el de las actividades para sacar los que incluyan en el nombre la action
                   filterCountries:state.countries.filter(el => el.activities.map(e=>e.name).includes(action.payload))

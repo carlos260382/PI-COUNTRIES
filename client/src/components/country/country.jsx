@@ -1,6 +1,6 @@
 import React from "react";
 import { numberWithCommas } from '../utils'
-import styles from "./Country.module.css"
+//import styles from "./Country.module.css"
 //pendiente revisar codigos
 export default function Country({ name, flag, continent, population }) {
     //pendiente revisar

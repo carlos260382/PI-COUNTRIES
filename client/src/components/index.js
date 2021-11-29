@@ -1,16 +1,16 @@
-import NavBar from "./navbar/Navnar";
-import Searchbar from "./searchBar/searchBar";
+import NavBar from "./navbar/Navbar";
+import Searchbar from "./searchBar/SearchBar";
 import Countries from "./countries/Countries";
 import Country from './country/Country';
-import Paged from './paged/paged';
+import Paged from './paged/Paged';
 import CountryDetal from './countryDetal/countryDetal';
 import Reset from './Button/Reset';
-import AddActivity from './addActivity/addActivity';
-import AlphaSort from './filter/AlphaSort';
-import Population from './filter/Population';
+import AddActivity from './addActivity/AddActivity';
+import AlphaSortFilter from './filter/AlphaSortFilter'
+import Population from './filter/population';
 import Continent from './filter/Continent';
-import Activity from './filter/Activity';
-import Button from './button/Button';
+import FilterActivity from './filter/FilterActivity.jsx';
+import Button from './Button/Button';
 
 import { ValidationInput } from './ValidationInput'
 
@@ -25,9 +25,9 @@ export{
     Continent,
     Reset,
     AddActivity,
-    AlphaSort,
+    AlphaSortFilter,
     Population,
-    Activity,
+    FilterActivity,
     Button, 
     ValidationInput,
     

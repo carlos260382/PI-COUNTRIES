@@ -69,7 +69,7 @@ router.get ('/', getApiInfo)
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
-  const paisesAll = await getApiInfo();
+ 
     try {
       if (name) {
          

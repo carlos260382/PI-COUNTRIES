@@ -11,10 +11,10 @@ export default function Paged({
 
   let totalPage = Math.ceil(countriesAll / countriesPerPage); //sacamos el total de paginas
 
-  for (let i = 1; i <= totalPage; i++) { 
+  for (let i = 1; i <= totalPage; i++) {
     pageNum.push(i);            //Vamos guardando el numero de paginas maximo q se necesita para renderizar todos los paises
   }
- 
+
   return (
     <div className={styles.container}>
       {pageNum && currentPage > 1 ? (
@@ -25,7 +25,7 @@ export default function Paged({
           {" "}
           back{" "}
         </button>
-      ) : null}  
+      ) : null}
 
       {pageNum?.map((Num) => (
         <button
@@ -37,7 +37,7 @@ export default function Paged({
         </button>
       ))}
 
-      {pageNum && currentPage <= pageNum.length - 1 ? (       
+      {pageNum && currentPage <= pageNum.length - 1 ? (
         <button
           className={styles.navigate}
           onClick={() => paginate(currentPage + 1)}

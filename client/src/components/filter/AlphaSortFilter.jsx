@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Sort } from '../../actions';
 //import styles from "./filter.module.css"
 
-export default function AlphaSort() {
+export default function AlphaSortFilter() {
     const dispatch=useDispatch();
     
     const handleChange=evento=>{

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Country from "../Country/Country";
+import Country from "../country/Country";
 
 import { getCountries, setCurrentPage } from "../../actions/index";
 import { NavLink } from "react-router-dom";

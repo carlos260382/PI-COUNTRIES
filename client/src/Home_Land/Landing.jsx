@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 //import styles from "../Landing/Landing.module.css";
 
-export default function landing() {
+export default function Landing() {
   return (
     <div className={styles.land}>
       <div className={styles.conta}>

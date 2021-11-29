@@ -4,7 +4,7 @@ import { getActivities, setCurrentPage} from "../../actions";
 import { filterActivities } from "../../actions";
 //import styles from "./Filter.module.css"
 
-export default function FilterByActivity() {
+export default function Activity() {
   const dispatch = useDispatch();
 
   useEffect(() => {

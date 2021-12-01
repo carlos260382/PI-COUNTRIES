@@ -19,7 +19,7 @@ currentPage:Number("1"),
 }
 
 function rootReducer (state = initialState, action){
-switch (action.payload) {
+switch (action.type) {
     case GET_COUNTRY:
         return {
             ...state, 

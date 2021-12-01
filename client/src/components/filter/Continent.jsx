@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByContinent, setCurrentPage } from "../../actions";
-//import styles from "./Filter.module.css"
+import styles from "./filter.module.css"
 
 export default function FilterByContinent() {
   

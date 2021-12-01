@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCountryDetal } from "./../../actions/index";
 import { Button } from "..";
 import { numberWithCommas } from "../utils";
-//import styles from "./CountryDetail.module.css";
-//import s from "../AddActivity/AddActivity.module.css";
-//import st from "../Button/ButtonHome.module.css";
+import styles from "./CountryDetal.module.css";
+import s from "../addActivity/AddActivity.module.css";
+import st from "../Button/ButtonHome.module.css";
 import { NavLink } from "react-router-dom";
 
 export default function CountryDetal(props) {

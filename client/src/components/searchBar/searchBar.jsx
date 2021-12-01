@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName, setCurrentPage } from "../../actions";
-//import logo from '../../img/search.svg';
-//import styles from "./SearchBar.module.css"
+import buscador from '../../Imagenes/buscador.png'
+import styles from "./SearchBar.module.css"
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
 
-  const dispatch=useDispatch();
-
-    const handleChange = (evento) => {
-    evento.preventDefault();
-    
-    setInput(evento.target.value);
-    
-  };
   
+  const handleChange = (evento) => {
+    evento.preventDefault();
+    setInput({...input, 
+      [evento.target.name]: evento.target.value })
+  }
+
   const handleSubmit = (evento) => {
     evento.preventDefault();
     dispatch(searchByName(input))
     setInput("")
-    
     dispatch(setCurrentPage(1))
-    
+
   };
   
-
   return (
     <div>
-      <form className={styles.searchForm} onSubmit={handleSubmit}>
+      <form className={styles.searchForm}>
         <input
           type="text"
           placeholder="Search by name"
           autoComplete="off"
           onChange={handleChange}
-          value={input}
+          
         />
-        <button type="submit"><img src={logo} alt="img no found" /></button>
+        <button type="submit">Search Country
+        <img src={buscador} alt="img no found" onClick={handleSubmit} />
+        </button> 
+        
       </form>
     </div>
   );

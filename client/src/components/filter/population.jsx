@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Sort } from "../../actions";
-//import styles from "./Filter.module.css"
+import styles from "./filter.module.css"
 
 export default function PopulationSort() {
   const dispatch = useDispatch();

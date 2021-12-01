@@ -1,54 +1,67 @@
 const { Router } = require('express');
+const { Op }  = require ('Sequelize')
 const { Country, Activity } = require('../db');
-const  axios  = require('axios')
+const  axios  = require('axios');
+const { Sequelize } = require('sequelize');
 //const { getdbInfo } = require('../controllers/getData' );
 
 const router = Router();
 
+const getApiInfo = async () => { 
+  const countries = await Country.findAll({
+    attributes: ["id", "name", "bandera", "continente", "capital", "subregion", "area", "poblacion"],
+  });
+  if (!countries.length) {
+    var allCountry = await axios.get("https://restcountries.com/v3/all");
+    allCountry = allCountry.data
+    allCountry = allCountry.map((el) => {
 
-function getApiInfo (req, res, next) {
-    
-        const paises = axios.get('https://restcountries.com/v3/all')
-        .then((response)=>{
-        
-        const aresp = response.data.map( (elem) => {
-            let country = { 
-                    id : elem.cca3,
-                    name : elem.name.common ? elem.name.common : 'sin nombre',
-                    bandera: elem.flags ? elem.flags[1] : 'sin bandera',
-                    continente: elem.continents ? elem.continents[0]: 'sin continente',
-                    capital: elem.capital ? elem.capital[0] :'no tiene capital',
-                    subregion: elem.subregion, 
-                    area: Math.floor(elem.area),
-                    poblacion: Math.floor(elem.population),
-                    } 
-        Country.create(country) 
-        return country
+      return {
+            id: el.cca3,
+            name: el.name.common,
+            bandera: el.flags.find((e)=>e.includes('svg')),
+            continente: el.region,
+            capital: el.capital,
+            subregion: el.subregion,
+            area: el.area,
+            poblacion: el.population,
+      }
     });
-                
-        return res.send(aresp)
-        })
-        .catch((err)=> next(err))
-};
+    await Country.bulkCreate(allCountry);
+    return allCountry;
+  } else {
+    return countries
+  }};
 
 
-// if (name){
-//     let paisesName = await paisesTotal.filter(elem => elem.name.toLowerCase().includes(name.toLowerCase())) 
-//     paisesName.length ?
-//     res.status(200).send(paisesName):
-//     res.status(404).send('pais no encontrado')
-// }else{
-// res.status(200).send(paisesTotal)
-// }
-// }); 
+router.get("/", async (req, res, next) => {
+  await getApiInfo()
+  const { name } = req.query;
+  try {
+    if(name){
+      let countryActivity = await Country.findAll({
+        include: Activity,
+        where: {
+             name: {
+             [Op.iLike]:"%" + name + "%",
+              },
+               },
+        order: [["name", "ASC"]],
+     });
+     
+     return res.send(countryActivity)
+   }  
+   else{ 
+    let countryActivity = await Country.findAll({
+    include: Activity,
+  }) 
+  return res.send(countryActivity)
+}} catch (error) {
+  res.status(404).send("Country not found")
+}})
 
 
 
-function getdbInfo(req, res, next) {
-    return Country.findAll()
-        .then((data) => res.send(data))
-        .catch((err) => next(err));
-}
 
 async function getIdPais(req, res, next) {
     try {
@@ -65,47 +78,43 @@ async function getIdPais(req, res, next) {
       }
     };
 
-router.get ('/', getApiInfo) 
+router.get("/:idPais", getIdPais)  
 
-router.get("/", async (req, res) => {
-  const { name } = req.query;
- 
-    try {
-      if (name) {
-         
-        let country = await Country.findAll({
-          include: Activity, 
-          where: {
-           
-            name: {
-              [Op.iLike]:name + "%",
-            },
-            
-          },
-          order: [["name", "ASC"]],
-        });
-        return res.send(country);
-       
-        
-      } else if (!name) {
-        let country = await Country.findAll({
-          include: Activity,
-          order: [["name", "ASC"]],
-        });
-        return res.send(country);
-      }
-    } catch (error) {
-      res.status(404).send("Country not found");
-    }
-  });
+
+// router.get("/", async (req, res, next) => {
+//   const { name } = req.query;
+//   const getApiInfoBd = await getApiInfo() 
+//  try {
+//       if (name) {
+//       let country = await Country.findAll({
+//           include: Activity, 
+//           where: {
+//               name: {
+//               [Op.iLike]:"%" + name + "%",
+//             },
+//            },
+//           order: [["name", "ASC"]],
+//         });
+//         return res.send(country);
+             
+//       } else if (!name) {
+//         let country = await Country.findAll({
+//           include: Activity,
+//           order: [["name", "ASC"]],
+//         });
+//         return res.send(country);
+//       }
+//     } catch (error) {
+//       res.status(404).send("Country not found");
+//     }
+//   });
 
 
 
 
 
   // const { name } = req.query;
-  // const paisesAll = await getApiInfo();
-  // try {
+    // try {
   // if (name){
   //   paisesName = await paisesAll.filter(eleme => eleme.name.toLowerCase().include(name.toLowerCase()))
   // paisesName.length ?
@@ -152,7 +161,6 @@ router.get("/", async (req, res) => {
   //   }
   // });
 
-router.get("/:idPais", getIdPais)  
 
 
 

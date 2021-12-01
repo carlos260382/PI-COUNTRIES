@@ -25,33 +25,11 @@ try {
 }
 
 
-
-
-//     if (!activity) res.send({
-//         error: 500,
-//         message: 'there is no information in the body'
-//     });
-//     try {
-//         const creaActivity = await Activity.create(activity);
-//         return res.send(creaActivity)
-//     } catch (error) {
-//         next(error);
-//     }
-// };
-
-
 router.get ('/', (req, res, next) => {
     res.send('soy get Activity')
 })
 
 router.post ('/', creaActivity)
-
-
-// router.get("/",async (req,res)=>{
-//     const findActivity= await Activity.findAll()
-//     res.send(findActivity)
-// })
-
 
 
 

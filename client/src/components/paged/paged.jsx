@@ -1,5 +1,5 @@
 import React from "react";
-//import styles from "./Pagination.module.css";
+import styles from "./Page.module.css";
 
 export default function Paged({
   countriesAll,

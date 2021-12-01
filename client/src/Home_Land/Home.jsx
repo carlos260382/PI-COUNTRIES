@@ -6,7 +6,7 @@ import Continent from "../components/filter/Continent";
 import AlphaSortFilter from "../components/filter/AlphaSortFilter";
 import Population from "../components/filter/population";
 import FilterActivity from "../components/filter/FilterActivity";
-//import styles from "../Home/Home.module.css";
+import styles from "./Home.module.css";
 
 export default function Home() {
   return (

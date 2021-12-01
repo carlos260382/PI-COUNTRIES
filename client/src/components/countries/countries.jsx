@@ -5,7 +5,7 @@ import Country from "../country/Country";
 import { getCountries, setCurrentPage } from "../../actions/index";
 import { NavLink } from "react-router-dom";
 import { Paged } from "../index";
-//import styles from "../Countries/Countries.module.css";
+import styles from "../countries/Countries.module.css";
 
 export default function Countries() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export default function Countries() {
     firstIndex, //0
     lastIndex //9
   );
-
+console.log('paises', currentCountries)
   //esta constante me ayuda para el renderizado
   const paginate = (numPag) => {
     dispatch(setCurrentPage(numPag));

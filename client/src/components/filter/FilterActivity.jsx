@@ -2,7 +2,7 @@ import React, { useEffect }  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities, setCurrentPage} from "../../actions";
 import { filterActivities } from "../../actions";
-//import styles from "./Filter.module.css"
+import styles from "./filter.module.css"
 
 export default function Activity() {
   const dispatch = useDispatch();

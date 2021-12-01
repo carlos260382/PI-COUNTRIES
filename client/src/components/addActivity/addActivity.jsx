@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postActivity } from "../../actions";
 import { Button, ValidationInput } from "../index";
-//import styles from "./AddActivity.module.css";
-//import s from "../Button/ButtonHome.module.css";
+import styles from "./AddActivity.module.css";
+import s from "../Button/ButtonHome.module.css";
 
 export default function AddActivity() {
   const countries = useSelector((state) => state.countries); //me traigo el state del store (esta F. reemplaza mapStateToProps en Comp. Class)

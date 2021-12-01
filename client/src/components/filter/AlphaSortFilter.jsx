@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { Sort } from '../../actions';
-//import styles from "./filter.module.css"
+import styles from "./filter.module.css"
 
 export default function AlphaSortFilter() {
     const dispatch=useDispatch();

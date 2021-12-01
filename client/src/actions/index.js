@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_COUNTRY = "GET_COUNTRIES";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
-export const GET_COUNTRY_DETAL = "GET_COUNTRY_DETAIL";
+export const GET_COUNTRY_DETAL = "GET_COUNTRY_DETAL";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 export const SORT = "SORT";

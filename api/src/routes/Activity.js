@@ -1,7 +1,12 @@
 const { Router } = require('express');
-const { Activity } = require('../db');
+const { Country, Activity, country_activity } = require('../db');
 
 const router = Router();
+
+router.get("/",async (req,res)=>{
+    const activity= await Activity.findAll()
+    res.send(activity)
+})
 
 async function creaActivity (req, res, next) {
     

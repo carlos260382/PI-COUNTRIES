@@ -3,28 +3,27 @@ const { Op }  = require ('Sequelize')
 const { Country, Activity } = require('../db');
 const  axios  = require('axios');
 const { Sequelize } = require('sequelize');
-//const { getdbInfo } = require('../controllers/getData' );
 
 const router = Router();
 
 const getApiInfo = async () => { 
   const countries = await Country.findAll({
-    attributes: ["id", "name", "bandera", "continente", "capital", "subregion", "area", "poblacion"],
+    attributes: ["id", "name", "flag", "continent", "capital", "subregion", "area", "population"],
   });
   if (!countries.length) {
     var allCountry = await axios.get("https://restcountries.com/v3/all");
     allCountry = allCountry.data
-    allCountry = allCountry.map((el) => {
+    allCountry = allCountry.map((elem) => {
 
       return {
-            id: el.cca3,
-            name: el.name.common,
-            bandera: el.flags.find((e)=>e.includes('svg')),
-            continente: el.region,
-            capital: el.capital,
-            subregion: el.subregion,
-            area: el.area,
-            poblacion: el.population,
+            id: elem.cca3,
+            name: elem.name.common ? elem.name.common : 'sin nombre',
+            flag: elem.flags.find((e)=>e.includes('svg')),
+            continent: elem.continents ? elem.continents[0] : 'sin continent',
+            capital: elem.capital ? elem.capital[0] : 'sin capital',
+            subregion: elem.subregion,
+            area: Math.floor(elem.area),
+            population: Math.floor (elem.population),
       }
     });
     await Country.bulkCreate(allCountry);
@@ -61,15 +60,13 @@ router.get("/", async (req, res, next) => {
 }})
 
 
-
-
 async function getIdPais(req, res, next) {
     try {
         const { idPais } = req.params;
         const detailCountry = await Country.findByPk(idPais.toUpperCase(), {
           include: Activity,
           attributes: {
-            exclude: ["createdAt", "updatedAt"],
+            // exclude: ["createdAt", "updatedAt"],
           },
         });
         return res.send(detailCountry);
@@ -79,90 +76,6 @@ async function getIdPais(req, res, next) {
     };
 
 router.get("/:idPais", getIdPais)  
-
-
-// router.get("/", async (req, res, next) => {
-//   const { name } = req.query;
-//   const getApiInfoBd = await getApiInfo() 
-//  try {
-//       if (name) {
-//       let country = await Country.findAll({
-//           include: Activity, 
-//           where: {
-//               name: {
-//               [Op.iLike]:"%" + name + "%",
-//             },
-//            },
-//           order: [["name", "ASC"]],
-//         });
-//         return res.send(country);
-             
-//       } else if (!name) {
-//         let country = await Country.findAll({
-//           include: Activity,
-//           order: [["name", "ASC"]],
-//         });
-//         return res.send(country);
-//       }
-//     } catch (error) {
-//       res.status(404).send("Country not found");
-//     }
-//   });
-
-
-
-
-
-  // const { name } = req.query;
-    // try {
-  // if (name){
-  //   paisesName = await paisesAll.filter(eleme => eleme.name.toLowerCase().include(name.toLowerCase()))
-  // paisesName.length ?
-  // res.status(200).send(paisesName) :
-  // res.status(400).send('pais no encontrado')
-  // }else{
-  //   res.status(200).send(paisesAll)
-  // }
-    
-  // } catch (error) {
-  //   res.status(404).send("pais no encontrado");
-  // } 
-
-  // })
-
-
-
-  //   try {
-  //     if (name) {
-         
-  //       let country = await Country.findAll({
-  //         include: Activity, 
-  //         where: {
-           
-  //           name: {
-  //             [Op.iLike]:name + "%",
-  //           },
-            
-  //         },
-  //         order: [["name", "ASC"]],
-  //       });
-  //       return res.send(country);
-       
-        
-  //     } else if (!name) {
-  //       let country = await Country.findAll({
-  //         include: Activity,
-  //         order: [["name", "ASC"]],
-  //       });
-  //       return res.send(country);
-  //     }
-  //   } catch (error) {
-  //     res.status(404).send("Country not found");
-  //   }
-  // });
-
-
-
 
 
 module.exports = router;

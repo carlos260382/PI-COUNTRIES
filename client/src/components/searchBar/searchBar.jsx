@@ -12,14 +12,16 @@ export default function SearchBar() {
   
   const handleChange = (evento) => {
     evento.preventDefault();
-    setInput({ ...input, 
-      [evento.target.name] : evento.target.value})
-      console.log('hola soy handlesearch', input)
+setInput(evento.target.value)
+
+    // setInput({ ...input, 
+    //   [evento.target.name] : evento.target.value})
+//console.log('hola soy Input search', input)
   }
 
   const handleSubmit = (evento) => {
-    console.log('hola soy search', input)
     evento.preventDefault();
+    console.log('hola soy search', input)
     dispatch(searchByName(input))
     setInput("")
    dispatch(setCurrentPage(1))
@@ -32,11 +34,11 @@ export default function SearchBar() {
           type="text"
           placeholder="Search by name"
           autoComplete="off"
-          onChange={handleChange}
+          onChange={(evento)=> handleChange(evento)}
           
         />
         <button type="submit">Search Country
-        <img src={buscador} alt="img no found" onClick={handleSubmit} />
+        <img src={buscador} alt="img no found" onClick={(evento)=>handleSubmit(evento)} />
         </button> 
         
       </form>

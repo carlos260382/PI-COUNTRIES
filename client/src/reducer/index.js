@@ -29,7 +29,7 @@ switch (action.type) {
         case SEARCH_BY_NAME:
             return {
               ...state,
-              filterCountries: state.countries.filter(e=> e.name === action.payload) 
+              filterCountries: action.payload 
             };
           case GET_COUNTRY_DETAL:
             return {

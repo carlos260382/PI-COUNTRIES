@@ -10,7 +10,6 @@ function App() {
   return (
     <div className= {styles.App}>
     <BrowserRouter>
-    {/* <Routes><Route path="/home*" element={<NavBar/>}/></Routes>  */}
     <Routes>
     <Route exact path="/Home" element={<Home/>} />
     <Route exact path="/" element={<Landing/>} />

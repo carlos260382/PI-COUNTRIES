@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_COUNTRY = "GET_COUNTRIES";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
-export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const SEARCH_BY_NAME = "SEARCHS_BY_NAME";
 export const GET_COUNTRY_DETAL = "GET_COUNTRY_DETAL";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
@@ -44,6 +44,7 @@ export function getActivities() {
 }
 
 export function searchByName(name) {
+  console.log('Yo soy name', name)
   return function (dispatch) {
     axios(`http://localhost:3001/countries?name=${name}`)
       .then((info) => {

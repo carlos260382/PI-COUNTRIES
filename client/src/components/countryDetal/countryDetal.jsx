@@ -5,20 +5,19 @@ import { Button } from "..";
 import styles from "./CountryDetal.module.css";
 import s from "../addActivity/AddActivity.module.css";
 import st from "../Button/ButtonHome.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 function numberWithCommas(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
 export default function CountryDetal(props) {
-
-  const { id }  = props
-
+  const  {id} = useParams();
+console.log('este es el Id', id)
   const dispatch = useDispatch();
 
   const countryDetal = useSelector((state) => state.countryDetal);
-  console.log('detallado de paises', countryDetal)
+  //console.log('detallado de paises', countryDetal)
   useEffect(() => { //el hook reemplaza las funciones de componentDidMount, componentDidUpdate, y componentWillUnmount en los componentes de clase.
 
     dispatch(getCountryDetal(id));// se monta el componente osea q se ejecuta getcountridetal q hace llamado a la api 
@@ -36,9 +35,9 @@ export default function CountryDetal(props) {
         <p>Capital: {countryDetal.capital}</p>
         <p>Subregion: {countryDetal.subregion}</p>
         <p>
-          Area: {countryDetal.area} Km<sup>2</sup>
+          Area: {numberWithCommas(Number(countryDetal.area))} Km<sup>2</sup>
         </p>
-        <p>Population: {countryDetal.population}</p>
+        <p>Population: {numberWithCommas(Number(countryDetal.population))}</p>
        
 
         <div>

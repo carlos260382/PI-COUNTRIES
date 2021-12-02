@@ -35,10 +35,15 @@ export default function AddActivity() {
         [evento.target.name]: [...input.countries, evento.target.value], //si el event es countries me traigo estado countries
       });
     } else {
-      setInput({
+      setInput( (input)=> ({
         ...input,
-        [evento.target.name]: evento.target.value,
-      });
+        [evento.target.name]: evento.target.value}));
+      
+      
+      // setInput({
+      //   ...input,
+      //   [evento.target.name]: evento.target.value,
+      // });
     }
   };
 
@@ -54,10 +59,9 @@ export default function AddActivity() {
     })
   };
 
- 
   return (
-    <div className={styles.container}>
-      <form className={styles.form}>
+    <React.Fragment className={styles.container}> 
+     <form className={styles.form}>
         <fieldset>
           <legend>Register Tourist Activity</legend>
           <div className={styles.formGroup}>
@@ -91,7 +95,7 @@ export default function AddActivity() {
             )}
           </div>
           <div className={styles.formGroup}>
-            <label>Duration (minutes) </label>
+            <label>Duration (Hours) </label>
             <input
               name="duration"
               value={input.duration}
@@ -164,7 +168,7 @@ export default function AddActivity() {
           </div>
         </fieldset>
       </form>
-    </div>
+   </React.Fragment>
   );
 }
 

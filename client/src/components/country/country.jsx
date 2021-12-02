@@ -2,6 +2,8 @@ import React from "react";
 //import { numberWithCommas } from '../utils'
 import styles from "./Country.module.css"
 
+
+
 function numberWithCommas(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
@@ -13,7 +15,8 @@ export default function Country({ name, flag, continent, population }) {
             <img src={flag} alt="img not found" />
             <h4>Name: {name}</h4>
             <p>Continent: {continent}</p>
-            <p>Population: {population}</p>
+            <p>Population: {numberWithCommas(Number(population))}</p>
+            
         </div>
     )
 }

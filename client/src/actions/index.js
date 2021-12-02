@@ -62,6 +62,7 @@ export function getCountryDetal(id) {
   return async function (dispatch) {
     try {
       let resul = await axios.get(`http://localhost:3001/countries/${id}`);
+      console.log('este es resul action', id)
       return dispatch({
         type: GET_COUNTRY_DETAL,
         payload: resul.data,

@@ -15,7 +15,7 @@ countries: [],
 filterCountries: [],
 countryDetal: [],
 activities:[],
-currentPage:Number("1"),
+paginaActual:Number("1"),
 }
 
 function rootReducer (state = initialState, action){
@@ -29,12 +29,12 @@ switch (action.type) {
         case SEARCH_BY_NAME:
             return {
               ...state,
-              filterCountries: action.payload, 
+              filterCountries: state.countries.filter(e=> e.name === action.payload) 
             };
           case GET_COUNTRY_DETAL:
             return {
               ...state,
-              countryDetal: action.payload,
+              countryDetal: action.payload
             };
           case FILTER_BY_CONTINENT:
             if (action.payload === "All") { //si son todos se guarda en el estado
@@ -52,7 +52,7 @@ switch (action.type) {
             case PAGED:
               return{
                 ...state,
-                currentPage:action.payload
+                paginaActual:action.payload
               }
             case GET_ACTIVITIES:
                return {

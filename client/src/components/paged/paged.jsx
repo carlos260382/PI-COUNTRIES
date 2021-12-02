@@ -1,46 +1,41 @@
 import React from "react";
-import styles from "./Page.module.css";
+import styles from "./Paged.module.css";
 
-export default function Paged({
-  countriesAll,
-  countriesPerPage,
-  paginate,
-  currentPage,
-}) {
-  const pageNum = [];
+export default function Paged({PaisesTodos, paisesEnUnaPagina, paginar, paginaActual,}){
+  const numeroPaginas = [];
 
-  let totalPage = Math.ceil(countriesAll / countriesPerPage); //sacamos el total de paginas
+  let totalPage = Math.ceil(PaisesTodos / paisesEnUnaPagina); //sacamos el total de paginas
 
   for (let i = 1; i <= totalPage; i++) {
-    pageNum.push(i);            //Vamos guardando el numero de paginas maximo q se necesita para renderizar todos los paises
+    numeroPaginas.push(i);            //Vamos guardando el numero de paginas maximo q se necesita para renderizar todos los paises
   }
 
   return (
     <div className={styles.container}>
-      {pageNum && currentPage > 1 ? (
+      {numeroPaginas && paginaActual > 1 ? (
         <button                              //boton para devolver
           className={styles.navigate}
-          onClick={() => paginate(currentPage - 1)}
+          onClick={() => paginar(paginaActual - 1)}
         >
           {" "}
           back{" "}
         </button>
       ) : null}
 
-      {pageNum?.map((Num) => (
+      {numeroPaginas?.map((Num) => (
         <button
-          className={currentPage === Num ? styles.btnselec : styles.btn}
+          className={paginaActual === Num ? styles.btnselec : styles.btn}
           key={Num}
-          onClick={() => paginate(Num)}
+          onClick={() => paginar(Num)}
         >
           {Num}
         </button>
       ))}
 
-      {pageNum && currentPage <= pageNum.length - 1 ? (
+      {numeroPaginas && paginaActual <= numeroPaginas.length - 1 ? (
         <button
           className={styles.navigate}
-          onClick={() => paginate(currentPage + 1)}
+          onClick={() => paginar(paginaActual + 1)}
         >
           {" "}
           Next{" "}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
-import { postActivity } from "../../actions";
+import { postActivity, getCountries } from "../../actions";
 import { Button, ValidationInput } from "../index";
 import styles from "./AddActivity.module.css";
 import s from "../Button/ButtonHome.module.css";
@@ -19,6 +20,13 @@ export default function AddActivity() {
   });
 
   const [error, setError] = useState(""); 
+
+useEffect(() => {
+ dispatch(getCountries()) 
+ 
+}, [dispatch])
+
+
 
   const handleChange = (evento) => {    
     setError(
@@ -47,6 +55,8 @@ export default function AddActivity() {
     }
   };
 
+
+
   const handleclick = (e) => {
     e.preventDefault();
     dispatch(postActivity(input));
@@ -58,9 +68,9 @@ export default function AddActivity() {
       countries: [],
     })
   };
-
+console.log ('formulario', input )
   return (
-    <React.Fragment className={styles.container}> 
+    <div className={styles.container}> 
      <form className={styles.form}>
         <fieldset>
           <legend>Register Tourist Activity</legend>
@@ -130,10 +140,11 @@ export default function AddActivity() {
               <select
                 className={error.countries && styles.danger}
                 name="countries"
+                multiple
                 onChange={handleChange}
               >
                 <option name="Seleccionar">Seleccionar</option>
-                {countries.map((country) => (
+                {countries?.map((country) => (
                   <option
                     key={country.id}
                     name={country.name}
@@ -168,7 +179,7 @@ export default function AddActivity() {
           </div>
         </fieldset>
       </form>
-   </React.Fragment>
+   </div>
   );
 }
 

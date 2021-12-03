@@ -15,6 +15,7 @@ countries: [],
 filterCountries: [],
 countryDetal: [],
 activities:[],
+
 paginaActual:Number("1"),
 }
 
@@ -27,8 +28,9 @@ switch (action.type) {
             filterCountries: action.payload,
         }
         case SEARCH_BY_NAME:
-            return {
-              ...state,
+
+        
+            return { ...state,
               filterCountries: action.payload 
             };
           case GET_COUNTRY_DETAL:

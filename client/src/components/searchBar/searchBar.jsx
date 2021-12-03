@@ -11,16 +11,16 @@ export default function SearchBar() {
 
   
   const handleChange = (evento) => {
-    evento.preventDefault();
+evento.preventDefault();
 setInput(evento.target.value)
 
     // setInput({ ...input, 
     //   [evento.target.name] : evento.target.value})
-//console.log('hola soy Input search', input)
+console.log('hola soy Input search', input)
   }
 
   const handleSubmit = (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
     console.log('hola soy search', input)
     dispatch(searchByName(input))
     setInput("")
@@ -37,8 +37,8 @@ setInput(evento.target.value)
           onChange={(evento)=> handleChange(evento)}
           
         />
-        <button type="submit">Search Country
-        <img src={buscador} alt="img no found" onClick={(evento)=>handleSubmit(evento)} />
+        <button onClick = {(evento)=>handleSubmit(evento)}>Search Country
+        <img src={buscador} alt="img no found" />
         </button> 
         
       </form>

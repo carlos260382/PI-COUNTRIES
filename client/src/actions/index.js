@@ -44,19 +44,18 @@ export function getActivities() {
 }
 
 export function searchByName(name) {
-  console.log('Yo soy name', name)
-  return function (dispatch) {
-    axios(`http://localhost:3001/countries?name=${name}`)
-      .then((info) => {
-        dispatch({
-          type: SEARCH_BY_NAME,
-          payload: info.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+  return async function (dispatch) {
+    try {
+      let resp = await axios(`http://localhost:3001/countries?name=${name}`)
+      dispatch({
+        type: SEARCH_BY_NAME,
+        payload: resp.data,
       });
-  };
+      
+    } catch (error) {
+      
+    }
+  }    
 }
 
 export function getCountryDetal(id) {

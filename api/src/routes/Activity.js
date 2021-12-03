@@ -3,24 +3,24 @@ const { Country, Activity, country_activity } = require('../db');
 
 const router = Router();
 
-router.get("/",async (req,res)=>{
-    const activity= await Activity.findAll()
-    res.send(activity)
-})
-
 async function creaActivity (req, res, next) {
     
+    const {name,difficulty,duration,season, countries} = req.body;
 try {
-    const {name,difficulty,duration,season,idActivity} = req.body;
 
     const newActivities=  await Activity.create({
                     name,
                     difficulty,
                     duration,
                     season
-                })
-    await newActivities.addCountry(idActivity)
-    res.send("Actividad turistica añadidad con exito")
+                }) 
+    let country = await Country.findAll({
+        where : {
+            id : countries
+        } 
+    }) 
+    newActivities.addCountry(country)
+    res.send(newActivities)
 
 
 } catch (error) { next (error)
@@ -29,12 +29,17 @@ try {
 }
 }
 
+router.post ('/', creaActivity)
 
-router.get ('/', (req, res, next) => {
-    res.send('soy get Activity')
+router.get("/",async (req,res)=>{
+    const activity= await Activity.findAll()
+    res.send(activity)
 })
 
-router.post ('/', creaActivity)
+// router.get ('/', (req, res, next) => {
+//     res.send('soy get Activity')
+// })
+
 
 
 

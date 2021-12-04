@@ -20,7 +20,7 @@ try {
         } 
     }) 
     newActivities.addCountry(country)
-    res.send(newActivities)
+    res.send(" Actividad turistica ingresada con exito")
 
 
 } catch (error) { next (error)

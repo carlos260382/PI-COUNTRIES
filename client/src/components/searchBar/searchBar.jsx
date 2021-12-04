@@ -38,7 +38,6 @@ console.log('hola soy Input search', input)
           
         />
         <button onClick = {(evento)=>handleSubmit(evento)}>Search Country
-        <img src={buscador} alt="img no found" />
         </button> 
         
       </form>

@@ -1,0 +1,16 @@
+.container{
+    margin-bottom: 40px;
+    margin-top: 50px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px rgb(145, 145, 218);  ;
+    color: rgb(2, 2, 15);
+    font-size: xx-large;
+  }
+  
+  .container select{
+      padding: 8px 10px;
+      font-size: 20px;
+      border: solid 2px rgb(145, 145, 218);     
+  }

@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    background-image: url(../../Imagenes/planeta2.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 100vw;
+    opacity: 0.9;
+  }
+  
+  .form {
+    height: min-content;
+    border-radius: 1em;
+    width: 600px;
+    color: navy; 
+    padding: 40px;
+    margin: 50px auto;
+    background-color: rgb(223, 220, 219);
+    border: 1px solid black;
+  }
+  .formGroup{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .form legend{
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  
+  .form label {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-weight: 700;
+      text-align: left;
+    }
+    .form input {
+      
+      border: 1px solid rgb(185, 142, 22);
+      padding: 8px 0.5px;
+      font-size: 1.2em;
+      color: red;
+      
+      width: 100%;
+      
+    }
+    
+    .form select{
+      border: 1px solid rgb(185, 142, 22);
+      padding: 8px 10px;
+      font-size: 1.2em;
+      color: var(--negro);
+      outline: none;
+      width: 100%;
+      transition: all .15s ease;
+    }
+    
+    .danger {
+      color: #5c0e16;
+      font-weight: 700;
+      border: #4b0d13;
+    }
+   
+    .btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+  }

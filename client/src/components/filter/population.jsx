@@ -19,10 +19,10 @@ export default function PopulationSort() {
       <select  onChange={handleChange}>
         <option name="Seleccionar">To Select</option>
         <option name="Population Asc." value="Population Asc.">
-          Population Asc.
+          Population upward
         </option>
         <option name="Population Desc." value="Population Desc.">
-          Population Desc.
+          Population falling
         </option>
       </select>
     </div>

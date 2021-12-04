@@ -1,0 +1,39 @@
+.container{
+    background-image: url( ../Imagenes/banderas.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    opacity: 0.9 ;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+}
+
+.nav{
+font-size: xx-large;
+color: seashell;
+
+ background: rgb(2,0,36);
+ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,100,121,0.5690651260504201) 69%, rgba(49,203,235,1) 95%);
+}
+
+.filters{
+    border-radius: solid 5px;
+    display: flex;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    font-size: x-large;
+    display: -webkit-inline-box;
+    
+    }
+
+.countries {
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,100,121,0.5690651260504201) 69%, rgba(49,203,235,1) 95%);
+
+
+}

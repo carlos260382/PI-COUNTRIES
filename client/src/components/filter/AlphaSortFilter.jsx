@@ -13,7 +13,7 @@ export default function AlphaSortFilter() {
     }
     return (
         <div className={styles.container}>
-            <h5>alphabetical order</h5>
+            <h5>Alphabetical Order</h5>
             <select onChange={handleChange}>
                 <option>to select</option> 
                 <option value="ASC">sort from a to z</option> 

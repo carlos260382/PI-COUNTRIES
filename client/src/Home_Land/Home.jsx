@@ -11,7 +11,7 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <nav className={styles.navbar} >
+      <nav className={styles.nav}>
         <NavBar />
       </nav>
       <section className={styles.filters}>
@@ -23,7 +23,6 @@ export default function Home() {
       </section>
       <section className={styles.countries}>
         <Countries />
-        
       </section>
     </div>
   );

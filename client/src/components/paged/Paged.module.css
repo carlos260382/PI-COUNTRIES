@@ -9,7 +9,7 @@
   .btn, .navigate {
     border: none;
     font-weight: 700;
-    background-color: var(--amarillo);
+    background-color: red;
     color: var(--negro);
     width: auto;
     height: auto;
@@ -20,14 +20,14 @@
   }
   
   .btn:hover,.navigate:hover {
-    background-color: var( --negro);
-    color: var(--amarillo);
+    background-color: red;
+    color: rgb(179, 171, 103);
     font-weight: 700;
   }
  
   .btnselec {
-    background-color: var( --negro);
-    color: var(--amarillo);
+    background-color:darkcyan ;
+    color: rgb(177, 148, 148) ;
     font-weight: 700;
     padding: 10px;
     margin: 2px;

@@ -5,12 +5,15 @@ import styles from "./NavBar.module.css";
 
 export default function NavBar() {
   return (
-    <div className={styles.container}>
-      <h3>PI-Countries-Henry</h3>
+    <div>
+      <h3>PI-Countries</h3>
       <SearchBar />
-      <NavLink to="/activity" className={styles.activity}>
-        Add Activity
+      <span className={styles.activity}>
+      <NavLink to="/activity">
+      <button className={styles.btn}>Add Activity</button> 
+      
       </NavLink>
+      </span>
     </div>
   );
 }

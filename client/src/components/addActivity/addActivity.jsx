@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { postActivity, getCountries } from "../../actions";
-import { Button, ValidationInput } from "../index";
+import { Button } from "../index";
 import styles from "./AddActivity.module.css";
 import s from "../Button/ButtonHome.module.css";
 
 export default function AddActivity() {
-  const countries = useSelector((state) => state.countries); //me traigo el state del store (esta F. reemplaza mapStateToProps en Comp. Class)
+  const countries = useSelector((state) => state.countries); 
 
-  const dispatch = useDispatch();    //reemplaza (mapDispatchToProps)en comp. class,      
+  const dispatch = useDispatch();    
 
-  const [input, setInput] = useState({ //estado interno del componente
+  const [input, setInput] = useState({ 
     name: "",
     difficulty: "",
     duration: "",
@@ -19,46 +18,30 @@ export default function AddActivity() {
     countries: [],
   });
 
-  const [error, setError] = useState(""); 
+  useEffect(() => {
+    dispatch(getCountries())
 
-useEffect(() => {
- dispatch(getCountries()) 
- 
-}, [dispatch])
+  }, [dispatch])
 
-
-
-  const handleChange = (evento) => {    
-    setError(
-      ValidationInput({
-        ...input,
-        [evento.target.name]: evento.target.value,
-      })
-    );
-
-    if (evento.target.name === "countries") {
-      
+   const handleChange = (evento) => {
+   if (evento.target.name === "countries") {
       setInput({
         ...input,
         [evento.target.name]: [...input.countries, evento.target.value], //si el event es countries me traigo estado countries
       });
     } else {
-      setInput( (input)=> ({
+
+      setInput((input) => ({
         ...input,
-        [evento.target.name]: evento.target.value}));
-      
-      
-      // setInput({
-      //   ...input,
-      //   [evento.target.name]: evento.target.value,
-      // });
+        [evento.target.name]: evento.target.value
+      }));
     }
   };
 
-
-
-  const handleclick = (e) => {
-    e.preventDefault();
+  const handleClick = async (evento) => {
+      evento.preventDefault();
+if(ValidationInput()) {
+  alert("Actividad creada correctamente")
     dispatch(postActivity(input));
     setInput({
       name: "",
@@ -66,13 +49,32 @@ useEffect(() => {
       duration: "",
       season: "",
       countries: [],
-    })
-  };
-console.log ('formulario', input )
+    })}
+    else {
+			alert("Los campos deben estar completos")
+		}
+	};
+ 
+function ValidationInput() {
+  if (input.name.length === 0) {
+  return false;
+  } else if (input.difficulty === "") {
+    return false;
+  } else if (input.duration === "") {
+    return false;
+  } else if (input.season === "") {
+    return false;
+  } else if (input.countries.length === 0) {
+    return false
+  }
+  return true
+};
+
   return (
     <div className={styles.container}> 
      <form className={styles.form}>
         <fieldset>
+
           <legend>Register Tourist Activity</legend>
           <div className={styles.formGroup}>
             <label>Name </label>
@@ -82,47 +84,40 @@ console.log ('formulario', input )
               value={input.name}
               autoComplete="off"
               placeholder="Enter Activity"
-              onChange={handleChange}
-              className={error.name && styles.danger}
-            />
-            {error.name ? <p className={styles.danger}>{error.name}</p> : ""}
+              onChange={(evento)=> handleChange(evento)}
+              />
+           
           </div>
           <div className={styles.formGroup}>
+
             <label>Difficulty (escriba de 1 a 5) </label>
             <select
-              className={error.difficulty && styles.danger}
-              onChange={handleChange}
-              name="difficulty"
-            >
+              onChange={(evento)=> handleChange(evento)}
+              name="difficulty" >
               {["Seleccionar", 1, 2, 3, 4, 5].map((el) => (
                 <option key={el} value={el}>
                   {el}
                 </option>
               ))}
             </select>
-            {error.difficulty && (
-              <p className={styles.danger}>{error.difficulty}</p>
-            )}
-          </div>
+            </div>
           <div className={styles.formGroup}>
+
             <label>Duration (Hours) </label>
             <input
               name="duration"
+              type="number"
               value={input.duration}
-              onChange={handleChange}
-              className={error.duration && styles.danger}
-            />
-            {error.duration && (
-              <p className={styles.danger}>{error.duration}</p>
-            )}
-          </div>
+              onChange={(evento)=> handleChange(evento)}
+              />
+            </div>
           <div className={styles.formGroup}>
+
+
             <label>Season: </label>
             <select
-              className={error.season && styles.danger}
-              onChange={handleChange}
-              name="season"
-            >
+             onChange={(evento)=> handleChange(evento)}
+              name="season">
               {["Seleccionar", "Summer", "Autumn", "Winter", "Spring"].map(
                 (el) => (
                   <option key={el} value={el}>
@@ -131,18 +126,16 @@ console.log ('formulario', input )
                 )
               )}
             </select>
-            {error.season && <p className={styles.danger}>{error.season}</p>}
-          </div>
-
+          
+            </div>
           <div className={styles.formGroup}>
+
             <label>select countries: </label>
             <div>
               <select
-                className={error.countries && styles.danger}
-                name="countries"
+               name="countries"
                 multiple
-                onChange={handleChange}
-              >
+                onChange={(evento)=> handleChange(evento)}>
                 <option name="Seleccionar">Seleccionar</option>
                 {countries?.map((country) => (
                   <option
@@ -154,26 +147,16 @@ console.log ('formulario', input )
                   </option>
                 ))}
               </select>
-             
               <div>{input.countries.join(" ")}</div>
-              {error.countries && (
-                <p className={styles.danger}>{error.countries}</p>
-              )}
             </div>
           </div>
           
           <div className={styles.btns}>
             <Button/>
             <button
-              className={s.btn}
-              onClick={handleclick}
-              disabled={
-                !input.name ||
-                error.difficulty ||
-                error.season ||
-                error.countries
-              }
-            >
+              className={s.btns}
+              onClick={(evento)=> handleClick(evento)}
+             >
               Insert Activity
             </button>
           </div>
@@ -181,5 +164,6 @@ console.log ('formulario', input )
       </form>
    </div>
   );
+
 }
 

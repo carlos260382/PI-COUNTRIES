@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName, setCurrentPage } from "../../actions";
-import buscador from '../../Imagenes/buscador.png'
+//import buscador from '../../Imagenes/buscador.png'
 import styles from "./SearchBar.module.css"
 
 export default function SearchBar() {

@@ -4,7 +4,6 @@ import { getCountryDetal } from "./../../actions/index";
 import { Button } from "..";
 import styles from "./CountryDetal.module.css";
 import s from "../addActivity/AddActivity.module.css";
-import st from "../Button/ButtonHome.module.css";
 import { NavLink, useParams } from "react-router-dom";
 
 function numberWithCommas(num) {
@@ -69,7 +68,7 @@ export default function CountryDetal(props) {
 
         <div className={s.btns}>
           <Button />
-          <NavLink to="/activity" className={st.btn}>
+          <NavLink to="/activity" className={styles.link}>
             Add Activity
           </NavLink>
         </div>

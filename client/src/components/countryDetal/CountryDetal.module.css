@@ -1,12 +1,7 @@
 .container{
-    background-image:var(--theme-Detail);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: top;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  
   }
   .section {
       
@@ -14,10 +9,11 @@
       height: auto;
       width: 30%;
       border-radius: 1rem;
-      border: 2px ridge var(--amarillo3);
-      background-color:var(--cardfondo-color);
-      box-shadow: 1px 1px 3px  var(--amarillo3);
-      color:var(--negro);
+      border: solid 2 px blue;
+      background: rgb(25,117,119);  
+      background: linear-gradient(0deg, rgba(25,117,119,1) 0%, rgba(35,10,222,1) 100%);
+      box-shadow: 1px 1px 3px orangered;
+      color: rgb(244, 247, 240);
       padding: 20px;
       margin: auto;
     }
@@ -36,4 +32,9 @@
    .section h3{
      border-bottom: 1px solid var(--primary-color);
    }
-  
+
+   .link{
+color: rgb(244, 247, 240);
+font-size: x-large
+
+   }

@@ -12,9 +12,6 @@ import Continent from './filter/Continent';
 import FilterActivity from './filter/FilterActivity.jsx';
 import Button from './Button/Button';
 
-import { ValidationInput } from './ValidationInput'
-
-
 export{
     NavBar,
     Searchbar,
@@ -29,6 +26,5 @@ export{
     Population,
     FilterActivity,
     Button, 
-    ValidationInput,
-    
+   
 }

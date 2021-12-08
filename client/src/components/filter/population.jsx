@@ -10,7 +10,7 @@ export default function PopulationSort() {
   const handleChange = (evento) => {
     evento.preventDefault();
     dispatch(Sort(evento.target.value));
-    
+   
   };
 
   return (

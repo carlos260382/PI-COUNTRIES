@@ -65,10 +65,7 @@ async function getIdPais(req, res, next) {
         const { idPais } = req.params;
         const detailCountry = await Country.findByPk(idPais.toUpperCase(), {
           include: Activity,
-          attributes: {
-            // exclude: ["createdAt", "updatedAt"],
-          },
-        });
+         });
         return res.send(detailCountry);
       } catch (error) {
         res.status(404).send("Country detail not found");

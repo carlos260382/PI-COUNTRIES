@@ -36,9 +36,7 @@ router.get("/",async (req,res)=>{
     res.send(activity)
 })
 
-// router.get ('/', (req, res, next) => {
-//     res.send('soy get Activity')
-// })
+
 
 
 

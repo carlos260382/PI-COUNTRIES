@@ -13,7 +13,7 @@ export default function Paged({PaisesTodos, paisesEnUnaPagina, paginar, paginaAc
   return (
     <div className={styles.container}>
       {numeroPaginas && paginaActual > 1 ? (
-        <button                              //boton para devolver
+        <button                              
           className={styles.navigate}
           onClick={() => paginar(paginaActual - 1)}
         >

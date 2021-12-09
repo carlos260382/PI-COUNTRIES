@@ -72,7 +72,7 @@ async function getIdPais(req, res, next) {
       }
     };
 
-router.get("/:idPais", getIdPais)  
+router.get("/:idPais", getIdPais)
 
 
 module.exports = router;

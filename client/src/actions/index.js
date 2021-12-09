@@ -10,17 +10,21 @@ export const SORT = "SORT";
 export const PAGED = "PAGINATE";
 
 export function getCountries() {
-  return async function (dispatch) {
-    let getCountry = await axios.get('http://localhost:3001/countries')
-    return dispatch({
-      type: GET_COUNTRY,
-      payload: getCountry.data
+  return function (dispatch) {
+    axios.get('http://localhost:3001/countries')
+    .then ((response)=>{
+      return dispatch({
+        type: GET_COUNTRY,
+        payload: response.data
+    }) 
     })
+  .catch((datos) => console.error(datos))
   }
 };
 
-export function postActivity(input) { //funcion que activa la ruta post 
-  return async function () { //en (..../activity) para crear actividad
+
+export function postActivity(input) { 
+  return async function () { 
     try {
       let resul = await axios.post("http://localhost:3001/activity", input);
       if (resul) alert(resul.data);
@@ -59,19 +63,17 @@ export function searchByName(name) {
 }
 
 export function getCountryDetal(id) {
-  return async function (dispatch) {
-    try {
-      let resul = await axios.get(`http://localhost:3001/countries/${id}`);
-      console.log('este es resul action', id)
+  return function (dispatch) {
+    axios.get(`http://localhost:3001/countries/${id}`)
+    .then((response)=>{
       return dispatch({
         type: GET_COUNTRY_DETAL,
-        payload: resul.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+        payload: response.data
+    }) 
+    })
+  .catch((datos) => console.error(datos))
+  }
+} 
 
 export function filterByContinent(payload) {
   return {

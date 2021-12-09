@@ -41,8 +41,7 @@ export default function AddActivity() {
   const handleClick = async (evento) => {
       evento.preventDefault();
 if(ValidationInput()) {
-  alert("Actividad creada correctamente")
-    dispatch(postActivity(input));
+   dispatch(postActivity(input));
     setInput({
       name: "",
       difficulty: "",
@@ -55,20 +54,22 @@ if(ValidationInput()) {
 		}
 	};
  
-function ValidationInput() {
-  if (input.name.length === 0) {
-  return false;
-  } else if (input.difficulty === "") {
-    return false;
-  } else if (input.duration === "") {
-    return false;
-  } else if (input.season === "") {
-    return false;
-  } else if (input.countries.length === 0) {
-    return false
-  }
-  return true
-};
+  function ValidationInput() {
+    if (input.name.length === 0) {
+      return false;
+    } else if (/\d/.test(input.name)) {
+      return false;
+    } else if (input.difficulty === "") {
+      return false;
+    } else if (input.duration === "") {
+      return false;
+    } else if (input.season === "") {
+      return false;
+    } else if (input.countries.length === 0) {
+      return false
+    }
+    return true
+  };
 
   return (
     <div className={styles.container}> 

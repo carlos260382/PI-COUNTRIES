@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Sort } from '../../actions';
 import styles from "./filter.module.css"
+
 
 export default function AlphaSortFilter() {
     const dispatch=useDispatch();
     
     const handleChange=evento=>{
        evento.preventDefault();
-       dispatch(Sort(evento.target.value))//cuando el usuario selecciona Ascendente el evento.target.value="ASC"
+       dispatch(Sort(evento.target.value))
 
     }
     return (
@@ -22,3 +23,6 @@ export default function AlphaSortFilter() {
         </div>
     )
 }
+
+
+

@@ -1,14 +1,13 @@
 const { Router } = require('express');
-const { Country, Activity, country_activity } = require('../db');
+const { Country, Activity } = require('../db');
 
 const router = Router();
 
 async function creaActivity (req, res, next) {
-    
-    const {name,difficulty,duration,season, countries} = req.body;
-try {
+ const {name,difficulty,duration,season, countries} = req.body;
 
-    const newActivities=  await Activity.create({
+ try {
+const newActivities=  await Activity.create({
                     name,
                     difficulty,
                     duration,

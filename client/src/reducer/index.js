@@ -15,7 +15,6 @@ countries: [],
 filterCountries: [],
 countryDetal: [],
 activities:[],
-
 paginaActual:Number("1"),
 }
 
@@ -24,7 +23,7 @@ switch (action.type) {
     case GET_COUNTRY:
         return {
             ...state, 
-            countries : action.payload, //se guarda en el estado countries q es un array
+            countries : action.payload, 
             filterCountries: action.payload,
         }
         case SEARCH_BY_NAME:
@@ -39,7 +38,7 @@ switch (action.type) {
               countryDetal: action.payload
             };
           case FILTER_BY_CONTINENT:
-            if (action.payload === "All") { //si son todos se guarda en el estado
+            if (action.payload === "All") { 
               return {
                 ...state,
                 filterCountries: state.countries,
@@ -68,7 +67,7 @@ switch (action.type) {
                   filterCountries:state.countries.filter(el => el.activities.map(e=>e.name).includes(action.payload))
                 } 
       
-          case SORT: //para ordenar se mira si se busca el orden ascendente o descendente
+          case SORT: 
             if (action.payload === "Population Asc.") {
               return {
                 ...state,

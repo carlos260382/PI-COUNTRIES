@@ -11,23 +11,23 @@ function numberWithCommas(num) {
 }
 
 
-export default function CountryDetal(props) {
+export default function CountryDetal() {
   const  {id} = useParams();
   const [loading, setLoading] = useState(true);
 
-  //console.log('este es el Id', id)
+  
   const dispatch = useDispatch();
 
   const countryDetal = useSelector((state) => state.countryDetal);
-  //console.log('detallado de paises', countryDetal)
-  useEffect(() => { //el hook reemplaza las funciones de componentDidMount, componentDidUpdate, y componentWillUnmount en los componentes de clase.
+  
+  useEffect(() => { 
     
     dispatch(getCountryDetal(id));// se monta el componente osea q se ejecuta getcountridetal q hace llamado a la api 
     setTimeout(() => {
     setLoading(false)      
     }, 100); 
   
-  }, [dispatch, id]);             //para traer los datos detallados del pais
+  }, [dispatch, id]);       
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ export default function CountryDetal(props) {
         <p>Population: {numberWithCommas(Number(countryDetal.population))}</p>
        
         <div>
-          <h3>Activity Information</h3> {/* renderizado de actividad */}
+          <h3>Activity Information</h3>
           {countryDetal.activities?.length ? countryDetal.activities.map((activity) => (
             <div>
               <h4> {/* para poner la primera letra mayus y las otras minusc */}
@@ -59,11 +59,11 @@ export default function CountryDetal(props) {
                   activity.name.slice(1).toLowerCase()}
               </h4>
               <p>Difficulty: {activity.difficulty}</p>
-              <p>Duration: {activity.duration} minutes</p>
+              <p>Duration: {activity.duration} Hours</p>
               <p>Season: {activity.season}</p>
             </div>
           )) : 
-           <p>without tourist activities</p>}
+           <p>No Activities</p>}
         </div>
 
         <div className={s.btns}>
@@ -74,7 +74,7 @@ export default function CountryDetal(props) {
         </div>
       </div>
        ) }
-              {/* renderizado informacion del pais */}
+           
       
     </div>
   );

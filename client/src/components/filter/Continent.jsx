@@ -21,7 +21,7 @@ export default function FilterByContinent() {
      <h5>Filter by Continent</h5>
       <select onChange={handleChange}>
         <option value="All">All</option>
-        {uniqueContinent?.map((el, index) => ( //si hay algo en el array de continentes lo mapeo 
+        {uniqueContinent?.map((el, index) => (
           <option value={el} key={index}>
             {el}
           </option>

@@ -1,5 +1,4 @@
 import React from "react";
-//import { numberWithCommas } from '../utils'
 import styles from "./Country.module.css"
 
 

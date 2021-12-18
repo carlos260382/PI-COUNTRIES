@@ -8,10 +8,11 @@
     bottom: 0;
     right: 0;
     left: 0;
-
+    width: 100%;
 }
 
 .nav{
+width: 100%;
 font-size: xx-large;
 color: seashell;
 
@@ -35,5 +36,26 @@ color: seashell;
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,100,121,0.5690651260504201) 69%, rgba(49,203,235,1) 95%);
 
+}
 
+@media (max-width: 768px) {
+    .container { 
+        background-size:100%;
+        width: 100%;
+        
+    }
+.nav{
+        width: 100%;
+      }
+}   
+
+@media (max-width: 360px) {
+    .container { 
+        background-size:100%;
+        width: 100%;
+  }
+
+  .nav{
+    width: 100%;
+  }
 }

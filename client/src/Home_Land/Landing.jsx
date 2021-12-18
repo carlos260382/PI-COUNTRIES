@@ -8,7 +8,7 @@ export default function Landing() {
       <div>
         <span><h1>Welcome To PI Countries</h1></span>
         <Link to="/home">
-          <button className={styles.btn}>Ingresar </button>
+          <button className={styles.btn}>Start</button>
         </Link>
       </div>
     </div>

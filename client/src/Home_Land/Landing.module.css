@@ -1,5 +1,5 @@
-.land{
-    background-image: url( ../Imagenes/landin3.jpg);
+.land {
+    background-image: url(../Imagenes/landin3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -9,13 +9,32 @@
     right: 0;
     left: 0;
     font-size: xxx-large;
-    color: mediumspringgreen;
+    color: white;
     background-color: rgba (255, 0, 0, 0.4);
     width: 100%
+}
 
+.btn {
+    font-size: xx-large;
+}
+@media (max-width: 768px) {
+    .land {
+        background-size: 100%;
+        width: 100%;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .land {
+        background-size: 100%;
+        width: 100%;
+        font-size: 15px;
     }
 
-
-    
+    .btn {
+        font-size: 15px;
+    }
+}
 
 

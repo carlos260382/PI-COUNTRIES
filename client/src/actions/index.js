@@ -12,19 +12,19 @@ export const PAGED = "PAGINATE";
 export function getCountries() {
   return function (dispatch) {
     axios.get('http://localhost:3001/countries')
-    .then ((response)=>{
-      return dispatch({
-        type: GET_COUNTRY,
-        payload: response.data
-    }) 
-    })
-  .catch((datos) => console.error(datos))
+      .then((response) => {
+        return dispatch({
+          type: GET_COUNTRY,
+          payload: response.data
+        })
+      })
+      .catch((datos) => console.error(datos))
   }
 };
 
 
-export function postActivity(input) { 
-  return async function () { 
+export function postActivity(input) {
+  return async function () {
     try {
       let resul = await axios.post("http://localhost:3001/activity", input);
       if (resul) alert(resul.data);
@@ -55,25 +55,25 @@ export function searchByName(name) {
         type: SEARCH_BY_NAME,
         payload: resp.data,
       });
-      
+
     } catch (error) {
-      
+
     }
-  }    
+  }
 }
 
 export function getCountryDetal(id) {
   return function (dispatch) {
     axios.get(`http://localhost:3001/countries/${id}`)
-    .then((response)=>{
-      return dispatch({
-        type: GET_COUNTRY_DETAL,
-        payload: response.data
-    }) 
-    })
-  .catch((datos) => console.error(datos))
+      .then((response) => {
+        return dispatch({
+          type: GET_COUNTRY_DETAL,
+          payload: response.data
+        })
+      })
+      .catch((datos) => console.error(datos))
   }
-} 
+}
 
 export function filterByContinent(payload) {
   return {

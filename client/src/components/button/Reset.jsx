@@ -4,10 +4,10 @@ import { getCountries } from '../../actions/index';
 import styles from "./ButtonHome.module.css"
 
 export default function Reset() {
-    
-    const dispatch=useDispatch()
 
-    const allCountries=(e)=>{
+    const dispatch = useDispatch()
+
+    const allCountries = (e) => {
         dispatch(getCountries())
     }
 

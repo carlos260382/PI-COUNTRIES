@@ -10,13 +10,13 @@ export default function PopulationSort() {
   const handleChange = (evento) => {
     evento.preventDefault();
     dispatch(Sort(evento.target.value));
-   
+
   };
 
   return (
     <div className={styles.container}>
       <h5>Sort By Population</h5>
-      <select  onChange={handleChange}>
+      <select onChange={handleChange}>
         <option name="Seleccionar">To Select</option>
         <option name="Population Asc." value="Population Asc.">
           Population upward

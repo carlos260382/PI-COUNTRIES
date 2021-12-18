@@ -5,20 +5,20 @@ import styles from "./filter.module.css"
 
 export default function FilterByContinent() {
   const dispatch = useDispatch();
-  
+
   const countries = useSelector((state) => state.countries);
   let arrayCont = countries?.map((cont) => cont.continent); //obtengo un array con todos los continentes
   let uniqueContinent = [...new Set(arrayCont)]; //guardamos el valor unico
-  
-   
+
+
   const handleChange = (evento) => {
     dispatch(filterByContinent(evento.target.value));
     dispatch(setCurrentPage(1))
   };
- 
+
   return (
     <div className={styles.container}>
-     <h5>Filter by Continent</h5>
+      <h5>Filter by Continent</h5>
       <select onChange={handleChange}>
         <option value="All">All</option>
         {uniqueContinent?.map((el, index) => (
@@ -30,5 +30,4 @@ export default function FilterByContinent() {
       </select>
     </div>
   );
-
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Paged.module.css";
 
-export default function Paged({PaisesTodos, paisesEnUnaPagina, paginar, paginaActual,}){
+export default function Paged({ PaisesTodos, paisesEnUnaPagina, paginar, paginaActual, }) {
   const numeroPaginas = [];
 
   let totalPage = Math.ceil(PaisesTodos / paisesEnUnaPagina); //sacamos el total de paginas
@@ -13,7 +13,7 @@ export default function Paged({PaisesTodos, paisesEnUnaPagina, paginar, paginaAc
   return (
     <div className={styles.container}>
       {numeroPaginas && paginaActual > 1 ? (
-        <button                              
+        <button
           className={styles.navigate}
           onClick={() => paginar(paginaActual - 1)}
         >

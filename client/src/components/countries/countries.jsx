@@ -15,11 +15,11 @@ export default function Countries() {
     dispatch(getCountries());
   }, [dispatch]);
 
-  
+
   const paisesEnUnaPagina = 9;
 
   const ultimoIndice = paginaActual * paisesEnUnaPagina; //9
-  const primerIndice = ultimoIndice- paisesEnUnaPagina; //0
+  const primerIndice = ultimoIndice - paisesEnUnaPagina; //0
 
   const currentCountries = filterCountries?.slice(primerIndice, ultimoIndice);
 
@@ -38,7 +38,7 @@ export default function Countries() {
                   <Country
                     name={c.name}
                     flag={c.flag}
-                    continent={c.continent}            
+                    continent={c.continent}
                     population={c.population}
                   />
                 </NavLink>

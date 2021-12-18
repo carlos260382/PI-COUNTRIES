@@ -1,6 +1,6 @@
-import React, { useEffect }  from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getActivities, setCurrentPage} from "../../actions";
+import { getActivities, setCurrentPage } from "../../actions";
 import { filterActivities } from "../../actions";
 import styles from "./filter.module.css"
 
@@ -24,9 +24,9 @@ export default function Activity() {
       <h5>Filter by Activity</h5>
       <select onChange={handleChange}>
         <option>to select</option>
-        {arrayAct?.map((act) => (     
+        {arrayAct?.map((act) => (
           <option key={act} value={act}>
-            {act.charAt(0).toUpperCase()+ act.slice(1).toLowerCase()}
+            {act.charAt(0).toUpperCase() + act.slice(1).toLowerCase()}
           </option>
         ))}
       </select>

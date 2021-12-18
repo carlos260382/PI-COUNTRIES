@@ -15,11 +15,11 @@ export default function Home() {
         <NavBar />
       </nav>
       <section className={styles.filters}>
-        <AlphaSortFilter/>
-        <Population/>
-        <Continent/>
-        <FilterActivity/>
-        <Reset/>
+        <AlphaSortFilter />
+        <Population />
+        <Continent />
+        <FilterActivity />
+        <Reset />
       </section>
       <section className={styles.countries}>
         <Countries />

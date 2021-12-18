@@ -8,19 +8,19 @@ export default function SearchBar() {
 
   const [input, setInput] = useState();
 
-  
+
   const handleChange = (evento) => {
-evento.preventDefault();
-setInput(evento.target.value)
-}
+    evento.preventDefault();
+    setInput(evento.target.value)
+  }
 
   const handleSubmit = (evento) => {
-  evento.preventDefault();
+    evento.preventDefault();
     dispatch(searchByName(input))
     setInput("")
-   dispatch(setCurrentPage(1))
+    dispatch(setCurrentPage(1))
   };
-  
+
   return (
     <div>
       <form className={styles.searchForm}>
@@ -28,12 +28,12 @@ setInput(evento.target.value)
           type="text"
           placeholder="Search by name"
           autoComplete="off"
-          onChange={(evento)=> handleChange(evento)}
-          
+          onChange={(evento) => handleChange(evento)}
+
         />
-        <button onClick = {(evento)=>handleSubmit(evento)}>Search Country
-        </button> 
-        
+        <button onClick={(evento) => handleSubmit(evento)}>Search Country
+        </button>
+
       </form>
     </div>
   );

@@ -12,7 +12,7 @@ import Continent from './filter/Continent';
 import FilterActivity from './filter/FilterActivity.jsx';
 import Button from './Button/Button';
 
-export{
+export {
     NavBar,
     Searchbar,
     Countries,
@@ -25,6 +25,6 @@ export{
     AlphaSortFilter,
     Population,
     FilterActivity,
-    Button, 
-   
+    Button,
+
 }

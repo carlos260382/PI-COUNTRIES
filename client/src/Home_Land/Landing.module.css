@@ -1,5 +1,5 @@
 .land{
-    background-image: url( ../Imagenes/casas2.jpg);
+    background-image: url( ../Imagenes/landin3.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -10,8 +10,12 @@
     left: 0;
     font-size: xxx-large;
     color: mediumspringgreen;
-    background-color: rgba (255, 0, 0, 0.4)
+    background-color: rgba (255, 0, 0, 0.4);
+    width: 100%
+
     }
+
+
     
 
 

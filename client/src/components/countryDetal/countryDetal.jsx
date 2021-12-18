@@ -52,7 +52,8 @@ export default function CountryDetal() {
         <div>
           <h3>Activity Information</h3>
           {countryDetal.activities?.length ? countryDetal.activities.map((activity) => (
-            <div>
+            <div key= {activity.name}>
+
               <h4> {/* para poner la primera letra mayus y las otras minusc */}
                 {" "}
                 {activity.name.charAt(0).toUpperCase() +  
